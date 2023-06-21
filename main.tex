@@ -41,7 +41,8 @@
 \section{Les processus ponctuels temporels}
 
 \begin{defn}[Processus ponctuel]
-Un processus ponctuel temporel est une distribution de probabilité
+Un processus ponctuel temporel 
+\cite{shchur2020blog, shchur2021neural} est une distribution de probabilité
 sur des séquences de longueur variable.
 
 Une réalisation d'un processus ponctuel est un objet de la forme
@@ -229,7 +230,7 @@ On va définir le modèle de manière auto-regréssive, c'est-à-dire qu'à chaq
 étape $i = 1, 2, \dots$ nous allons définir la distribution
 $P^*(t_i)$ du prochain temps d'arrivée $t_i$ en conditionnant par rapport
 à l'historique des événements antérieurs $\mathcal{H}(t_i)
-= \{t_1, \dots, t_{i-1}\}$.
+= \{t_1, \dots, t_{i-1}\}$ \cite{shchur2021blog}.
 
 \subsection{Représentation des données}
 
@@ -310,6 +311,12 @@ S(\tau \, |\,  b, k) = \exp(-b\tau^k)$$
 avec $\tau > 0$ et $(b, k) \in \mathbb{R}^2_+$ les deux paramètres de la
 distribution.
 
+\subsubsection{Les lois de mélange}
+
+On peut également utiliser une loi de mélange, qui avec suffisamment de
+composantes devrait être capable d'approximer n'importe quelle loi de
+distribution \cite{shchur2022thesis}.
+
 \subsubsection{Paramétrisation de la distribution}
 
 Les paramètres $b_i$ et $k_i$ sont obtenues comme résultat 
@@ -332,6 +339,7 @@ par le scalaire $\beta$.
 \subsection{Calcul de la log-vraisemblance}
 
 La log-vraisemblance est l'objectif pour l'entraînement du modèle génératif.
+\cite{dascher2021flexible}
 Comment obtient-on la log-vraisemblance pour un processus ponctuel ?
 On suppose qu'on a observé qu'un seul événement dans l'intervalle $[0, T]$.
 Cela se traduit par
@@ -370,12 +378,6 @@ Plusieurs hyperparamètres tels que le nombre d'itérations complètes sur les
 données, le choix de l'optimiseur, la vitesse à laquelle s'effectue la
 descente de gradient et la taille $C$ du vecteur contexte produit par le
 réseau de neurones viennent influer sur les performances du modèle.
-
-\section{Les réseaux de neurones récurrents}
-
-
-
-\nocite{*}
 
 \printbibliography
 
